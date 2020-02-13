@@ -5,6 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.iteasyup.library.consts.ViewNameConst;
 
+/**
+ * 登录界面
+ * 
+ * */
+
 @Controller
 public class LoginController {
 	

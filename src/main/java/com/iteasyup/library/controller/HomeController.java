@@ -5,6 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.iteasyup.library.consts.ViewNameConst;
 
+/**
+ * 首页的controller
+ * @author 廖东成
+ * */
+
 @Controller
 public class HomeController {
 	

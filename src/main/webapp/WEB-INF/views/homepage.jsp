@@ -28,7 +28,7 @@
 	}
 	
 	#beijing {
-		background-image: url('img/beijing.png')
+		background-image: url('/library/src/main/webapp/WEB-INF/img/beijing.png')
 	}
 	
 </style>
