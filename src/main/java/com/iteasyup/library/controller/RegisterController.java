@@ -1,5 +1,6 @@
 package com.iteasyup.library.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.iteasyup.library.consts.ViewNameConst;
 import com.iteasyup.library.controller.bean.RegisterForm;
+import com.iteasyup.library.service.BookService;
 import com.iteasyup.library.service.UserService;
 import com.iteasyup.library.entity.User;
 
@@ -27,6 +29,7 @@ public class RegisterController {
 	@Autowired
 	private UserService userService;
 	
+	
 	@GetMapping("/register")
 	public String init(@ModelAttribute RegisterForm registerForm){
 		return ViewNameConst.REGISTER;
@@ -37,7 +40,8 @@ public class RegisterController {
 	public String register(@Valid
 				   @ModelAttribute RegisterForm registerForm
 				 , BindingResult bindingresult
-				 , HttpSession session){
+				 , HttpSession session
+				 , HttpServletRequest request){
 		//如果校验失败，则返回注册页面
 		if (bindingresult.hasErrors()) {
 			return "register";
@@ -47,7 +51,8 @@ public class RegisterController {
 		
 		//将注册成功的用户添加到session中
 		session.setAttribute("loginUser", user);
-		return "bookhp";
+		
+		return "redirect:/bookhp";
 	}
 	
 }

@@ -5,26 +5,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 用户类
+ * order类
  * */
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Order {
+
+	private Integer id;
 	
-	private Integer Id;
+	private String starttime;
 	
-	private	String userName;
+	private String endtime;
 	
-	private String tel;
+	private Integer userid;
 	
-	private String password;
+	private Integer bookid;
 	
-	private int usertype;
+	private String state;
 	
-	private String question;
-	
-	private String answer;
 	
 }
