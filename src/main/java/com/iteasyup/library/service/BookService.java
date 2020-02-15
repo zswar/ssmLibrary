@@ -11,7 +11,9 @@ import com.iteasyup.library.entity.Book;
 
 /**
  * 查询图书数据
- * */
+ * @author dongcheng.liao
+ * @since 2020/02/14
+ */
 
 @Service
 public class BookService {
@@ -19,10 +21,10 @@ public class BookService {
 	@Autowired
 	private BookDao bookDao;
 	
-	public List<Book> select(){
+	public List<Book> selectAll(){
 		
-		List<Book> list=bookDao.selectAll();
-		return list;
+		List<Book> allBooks=bookDao.selectbookAll();
+		return allBooks;
 	}
 	
 }

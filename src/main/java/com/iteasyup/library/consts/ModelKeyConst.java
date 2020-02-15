@@ -2,11 +2,12 @@ package com.iteasyup.library.consts;
 
 /**
  * model键名
- * 暂时未用到
- * */
+ * @author dongcheng.liao
+ * @since 2020/02/14
+ */
 
 public class ModelKeyConst {
 	
-	public static final String BOOKS="books";
+	public static final String BOOKS = "books";
 	
 }

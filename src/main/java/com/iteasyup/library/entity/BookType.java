@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 
 /**
  * booktype类
- * */
+ * @author dongcheng.liao
+ * @since 2020/02/14
+ */
 
 @Data
 @AllArgsConstructor

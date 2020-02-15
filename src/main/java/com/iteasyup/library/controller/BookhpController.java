@@ -15,7 +15,9 @@ import com.iteasyup.library.service.BookService;
 
 /**
  * 图书首页controller
- * */
+ * @author dongcheng.liao
+ * @since 2020/02/14
+ */
 
 @Controller
 public class BookhpController {
@@ -25,10 +27,13 @@ public class BookhpController {
 	
 	@GetMapping("/bookhp")
 	public String init(HttpServletRequest request){
-		List<Book> select = bookService.select();
+		List<Book> select = bookService.selectAll();
 		request.setAttribute("books", select.subList(0, 3));
+		for (Book book : select.subList(0, 3)) {
+			System.out.println(book);
+		}
 		request.setAttribute("num", select.size());
-		return ViewNameConst.BOOKHP;
+		return ViewNameConst.BOOK_HP;
 	}
 	
 }

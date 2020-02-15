@@ -6,7 +6,11 @@ import org.apache.ibatis.annotations.Select;
 
 import com.iteasyup.library.entity.Book;
 
-
+/**
+ * 对book表的交互
+ * @author dongcheng.liao
+ * @since 2020/02/14
+ */
 public interface BookDao {
 	
 	/**
@@ -21,7 +25,7 @@ public interface BookDao {
 			+ "    , price "
 			+ "    , type_id type"
 			+ " from book")
-	List<Book> selectAll();
+	List<Book> selectbookAll();
 	
 	
 	

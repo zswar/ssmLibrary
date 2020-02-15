@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.iteasyup.library.consts.ViewNameConst;
 
 /**
- * 登录界面
- * 
- * */
+ * 普通用户登录controller
+ * @author dongcheng.liao
+ * @since 2020/02/13
+ */
 
 @Controller
 public class LoginController {
