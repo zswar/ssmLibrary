@@ -1,5 +1,7 @@
+<%@page import="com.iteasyup.library.service.BookService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,7 +15,8 @@
 		<button></button>
 	</form>
 	<a href="orderhp">我的订单</a>
-	共-${num } -本书
+	共-${sumBook} -本书
+	
 	<table>
 		<thead>
 			<tr>
@@ -27,16 +30,17 @@
 			</tr>
 		</thead>
 		
+		
 		<tbody>
-			<c:forEach items="${books}"  var="book"  varStatus="sta">
+			<c:forEach items="${subBooks}"  var="book"  varStatus="sta">
 	            <tr>
 	            	<td>${sta.count}</td>
-	                <td>${book.bookname}</td>
+	                <td>${book.bookName}</td>
 	                <td>${book.author}</td>
-	                <td>${book.publishlocation}</td>
-	                <td>${book.publishtime}</td>
+	                <td>${book.publishLocation}</td>
+	                <td>${book.publishTime}</td>
 	                <td>${book.price}</td>
-	                <td> <a href="order?id=${book.id}&bookname=${book.bookname}&price=${book.price }">借阅</a> </td>
+	                <td> <a href="order?id=${book.id}&bookName=${book.bookName}&price=${book.price }">借阅</a> </td>
 	                
 	            </tr>
         	</c:forEach>

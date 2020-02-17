@@ -23,7 +23,7 @@ public class User {
 	
 	private String password;
 	
-	private int usertype;
+	private int userType;
 	
 	private String question;
 	

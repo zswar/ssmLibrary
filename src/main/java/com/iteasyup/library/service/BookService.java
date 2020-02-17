@@ -21,9 +21,9 @@ public class BookService {
 	@Autowired
 	private BookDao bookDao;
 	
-	public List<Book> selectAll(){
+	public List<Book> findAllBooks(){
 		
-		List<Book> allBooks=bookDao.selectbookAll();
+		List<Book> allBooks=bookDao.selectAll();
 		return allBooks;
 	}
 	

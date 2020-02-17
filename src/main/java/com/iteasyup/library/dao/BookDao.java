@@ -18,14 +18,16 @@ public interface BookDao {
 	 * 
 	 * */
 	@Select("select  id"
-			+ "	   , book_name bookname"
+			+ "	   , book_name bookName"
 			+ "	   , author"
-			+ "	   , publish_location publishlocation"
-			+ "    , publish_time publishtime"
+			+ "	   , publish_location publishLocation"
+			+ "    , publish_time publishTime"
 			+ "    , price "
-			+ "    , type_id type"
+			+ "    , type_id typeId"
 			+ " from book")
-	List<Book> selectbookAll();
+	List<Book> selectAll();
+	
+	
 	
 	
 	

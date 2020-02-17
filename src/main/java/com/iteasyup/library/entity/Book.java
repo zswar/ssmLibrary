@@ -17,17 +17,17 @@ public class Book {
 	
 	private Integer id;
 	
-	private String bookname;
+	private String bookName;
 	
 	private String author;
 	
-	private String publishlocation;
+	private String publishLocation;
 	
-	private String publishtime;
+	private String publishTime;
 	
 	private int price;
 	
-	private Integer typeid;
+	private Integer typeId;
 	
 	
 }

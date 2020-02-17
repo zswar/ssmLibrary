@@ -7,8 +7,51 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>请登录</h1>
+	<form action="bookhp" method="post">
+		<label>用户名：</label>
+		<input type="text" name="userName" required/>
+		<span id="name"></span>
+		<br/>
+		<label>密码：</label>
+		<input type="password" name="password" required/>
+		<span id="password"></span>
+		<br/>
+		<button disabled>登录</button>
+		<br/>
+	</form>
+	<a href="#">忘记密码</a>
+	<a href="register?userName&password">免费注册</a>
 	
+	<script>
+		$('[name="userName"]').change(function(){
+			$.ajax({
+				url: '${pageContext.request.contextPath}/login/matchUserName',
+				type: 'post',
+				data: {"userName":$('[name="userName"]').val()},
+				success: function(reData) {
+					$('#name').html(${message})
+				}
+			});
+		})
+		$('[name="password"]').change(function(){
+			$.ajax({
+				url: '${pageContext.request.contextPath}/login/matchUse',
+				type: 'post',
+				data: {   "userName":$('[name="userName"]').val()
+						, "password":$('[name="password"]').val()},
+				}
+				success: function(reData) {
+					$('#password').html(${message})
+				}
+			});
+		})
+		$('button').mouseover(function(){
+			if($('#name')==''&&$('#password')==''){
+				$('button').attr('disabled',false)
+			}
+		})
+	</script>
 	
 </body>
 </html>

@@ -8,6 +8,6 @@ package com.iteasyup.library.consts;
 
 public class DataLineConst {
 
-	public static final int DATALINE = 4;
+	public static final int DATA_LINE = 4;
 	
 }
