@@ -12,7 +12,7 @@
 	<h1>北方图书城在线检索系统首页</h1>
 	<form action="search"  method="get">
 		<input type="text" name="searchinf"/>
-		<button></button>
+		<button>搜索</button>
 	</form>
 	<a href="orderhp">我的订单</a>
 	共-${sumBook} -本书

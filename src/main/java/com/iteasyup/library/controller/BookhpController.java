@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iteasyup.library.consts.DataLineConst;
@@ -25,7 +27,7 @@ import lombok.Value;
  * @since 2020/02/14
  */
 
-@Value
+
 @Controller
 public class BookhpController {
 	
@@ -42,6 +44,13 @@ public class BookhpController {
 			System.out.println(book);
 		}
 		return modelAndView;
+	}
+	
+	@PostMapping("/bookhp/search")
+	@ResponseBody
+	public List<Book> search(String bookName){
+		List<Book> subBooks=bookService.findBooksByBookName(bookName);
+		return subBooks;
 	}
 	
 }

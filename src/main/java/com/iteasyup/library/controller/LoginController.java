@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.iteasyup.library.consts.MessageConst;
-import com.iteasyup.library.consts.ModelKeyConst;
+
 import com.iteasyup.library.consts.SessionConst;
 import com.iteasyup.library.consts.ViewNameConst;
 import com.iteasyup.library.entity.User;
@@ -36,32 +37,29 @@ public class LoginController {
 	
 	
 	@PostMapping("/login/matchUserName")
-	public ModelAndView matchUserName(String userName, ModelAndView modelAndView ){
-		modelAndView.setViewName(ViewNameConst.LOGIN);
+	@ResponseBody
+	public String matchUserName(String userName){
 		Boolean matchUserName = userService.matchUserName(userName);
 		if (matchUserName==true) {
-			modelAndView.addObject(ModelKeyConst.MESSAGE, MessageConst.CORRECT);
+			return MessageConst.CORRECT;
 		}
 		else {
-			modelAndView.addObject(ModelKeyConst.MESSAGE, MessageConst.USERNAMEWRONG);
+			return MessageConst.USERNAMEWRONG;
 		}
-		return modelAndView;
 	}
 	
 	@PostMapping("/login/matchUser")
-	public ModelAndView matchUser(String userName
+	@ResponseBody
+	public String matchUser(String userName
 								, String password
-								, ModelAndView modelAndView
 								, HttpSession session){
-		modelAndView.setViewName(ViewNameConst.LOGIN);
 		User matchUser = userService.matchUser(userName, password);
 		if (Objects.nonNull(matchUser)) {
-			modelAndView.addObject(ModelKeyConst.MESSAGE,MessageConst.CORRECT);
 			session.setAttribute(SessionConst.USER, matchUser);
+			return MessageConst.CORRECT;		
 		}else {
-			modelAndView.addObject(ModelKeyConst.MESSAGE,MessageConst.PASSWORDWRONG);
+			return MessageConst.PASSWORDWRONG;
 		}
-		return modelAndView;
 	}
 	
 }

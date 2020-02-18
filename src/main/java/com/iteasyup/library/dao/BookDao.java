@@ -27,9 +27,20 @@ public interface BookDao {
 			+ " from book")
 	List<Book> selectAll();
 	
-	
-	
-	
+	/**
+	 * 模糊查询
+	 * 
+	 * */
+	@Select("select  id"
+			+ "	   , book_name bookName"
+			+ "	   , author"
+			+ "	   , publish_location publishLocation"
+			+ "    , publish_time publishTime"
+			+ "    , price "
+			+ "    , type_id typeId"
+			+ " from book "
+			+ "where book_name like #{bookName}")
+	List<Book> selectByBookName(String bookName);
 	
 	
 }

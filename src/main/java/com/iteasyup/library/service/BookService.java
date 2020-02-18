@@ -27,4 +27,10 @@ public class BookService {
 		return allBooks;
 	}
 	
+	public List<Book> findBooksByBookName(String bookName){
+		
+		List<Book> books=bookDao.selectByBookName(bookName);
+		return books;
+	}
+	
 }
