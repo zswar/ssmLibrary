@@ -2,6 +2,7 @@ package com.iteasyup.library.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 
 import com.iteasyup.library.entity.Book;
@@ -41,6 +42,7 @@ public interface BookDao {
 			+ " from book "
 			+ "where book_name like #{bookName}")
 	List<Book> selectByBookName(String bookName);
+	
 	
 	
 }

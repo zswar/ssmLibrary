@@ -38,27 +38,29 @@ public class LoginController {
 	
 	@PostMapping("/login/matchUserName")
 	@ResponseBody
-	public String matchUserName(String userName){
+	public Boolean matchUserName(String userName){
 		Boolean matchUserName = userService.matchUserName(userName);
-		if (matchUserName==true) {
-			return MessageConst.CORRECT;
+		if (matchUserName) {
+			return true;
 		}
 		else {
-			return MessageConst.USERNAMEWRONG;
+			return false;
 		}
 	}
 	
 	@PostMapping("/login/matchUser")
 	@ResponseBody
-	public String matchUser(String userName
+	public Boolean matchUser(String userName
 								, String password
 								, HttpSession session){
 		User matchUser = userService.matchUser(userName, password);
 		if (Objects.nonNull(matchUser)) {
 			session.setAttribute(SessionConst.USER, matchUser);
-			return MessageConst.CORRECT;		
+			
+			return true;		
 		}else {
-			return MessageConst.PASSWORDWRONG;
+			
+			return false;
 		}
 	}
 	

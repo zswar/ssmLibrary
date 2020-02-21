@@ -17,13 +17,13 @@ public class Order {
 
 	private Integer id;
 	
-	private String starttime;
+	private String startTime;
 	
-	private String endtime;
+	private String endTime;
 	
-	private Integer userid;
+	private Integer userId;
 	
-	private Integer bookid;
+	private Integer bookId;
 	
 	private String state;
 	

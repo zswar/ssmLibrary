@@ -11,11 +11,11 @@
 	<h1>请登录</h1>
 	<form action="bookhp" method="post">
 		<label>用户名：</label>
-		<input type="text" name="userName"/>
+		<input type="text" name="userName" id="userNameIn"/>
 		<span id="name"></span>
 		<br/>
 		<label>密码：</label>
-		<input type="password" name="password"/>
+		<input type="password" name="password" id="passwordIn"/>
 		<span id="password"></span>
 		<br/>
 		<button disabled>登录</button>
@@ -26,35 +26,48 @@
 	
 	
 	<script>
-		$('[name="userName"]').change(function(){
+		$("#userNameIn").on("blur",function(){
 			$.ajax({
 				url: '${pageContext.request.contextPath}/login/matchUserName',
 				type: 'post',
-				data: {"userName":$('[name="userName"]').val()},
-				success: function(reData) {
-					$('#name').html(${message})
-					
-				}
+				data: {"userName":$("#userNameIn").val()},
+				success: function(data) {
+					if(data==false){
+						
+						$("#name").html("用户名不存在");
+						
+					}else{
+						
+						$("#name").html("用户名正确");
+					}					
+				},
 			});
 		})
 		
-		$('[name="password"]').change(function(){
+		$("#passwordIn").change(function(){
 			$.ajax({
-				url: '${pageContext.request.contextPath}/login/matchUse',
+				url: '${pageContext.request.contextPath}/login/matchUser',
 				type: 'post',
-				data: {   "userName":$('[name="userName"]').val()
-						, "password":$('[name="password"]').val()},
-				}
+				data: {"userName":$("#userNameIn").val(), "password":$('[name="password"]').val()
+				},
 				success: function(reData) {
-					$('#password').html(${message})
-				}
+					if(reData==false){
+						
+						$("#password").html("密码错误");
+					}else{
+						
+						$("#password").html("密码正确");
+						if($("#name").html()=="用户名正确"){
+							$('button').attr('disabled',false)
+						}
+					}
+				},
 			});
 		})
-		$('button').mouseover(function(){
-			if($('#name')==''&&$('#password')==''){
-				$('button').attr('disabled',false)
-			}
-		})
+		
+		
+		
+		
 	</script>
 	
 </body>
