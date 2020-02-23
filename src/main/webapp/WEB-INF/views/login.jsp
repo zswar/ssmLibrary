@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>请登录</h1>
-	<form action="bookhp" method="post">
+	<form action="bookhp" method="get">
 		<label>用户名：</label>
 		<input type="text" name="userName" id="userNameIn"/>
 		<span id="name"></span>

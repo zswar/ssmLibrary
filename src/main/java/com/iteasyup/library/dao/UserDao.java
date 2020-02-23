@@ -51,6 +51,6 @@ public interface UserDao {
 	User selectByUserNameAndPassword(@Param("userName") String userName
 			  , @Param("password") String password);
 	
-	@Select("select user_name userName from user where user_name=#{userName}")
+	@Select("select user_name userName from user where user_name = #{userName} ")
 	String selectByUserName(String userName);
 }

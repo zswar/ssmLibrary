@@ -15,5 +15,6 @@ public class ViewNameConst {
 	public static final String BOOK_HP = "bookhp";
 	public static final String BORROW = "borrow";
 	public static final String ORDER = "order";
+	public static final String ORDERCENTER = "orderCenter";
 	
 }

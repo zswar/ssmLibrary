@@ -40,7 +40,7 @@
 	                <td>${book.publishLocation}</td>
 	                <td>${book.publishTime}</td>
 	                <td>${book.price}</td>
-	                <td> <a href="borrow?book=${book} }">借阅</a> </td>
+	                <td> <a href="borrow?id=${book.id}&bookName=${book.bookName}&author=${book.author}&publishLocation=${book.publishLocation}&publishTime=${book.publishTime}&price=${book.price}&typeId=${book.typeId}">借阅</a> </td>
 	                
 	            </tr>
         	</c:forEach>

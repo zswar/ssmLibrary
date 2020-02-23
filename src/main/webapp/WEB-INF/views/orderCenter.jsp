@@ -7,16 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	订单号：${order.id }
-	租书人：${userName }
-	租期：${days }
-	<br/>
-	开始时间:${order.startTime }
-	<br/>
-	结束时间：${order.endTime }
-	<br/>
-	<a href="order/center">订单中心</a>
-	<a href="bookhp">图书首页</a>
-	
+
 </body>
 </html>

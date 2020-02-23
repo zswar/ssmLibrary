@@ -1,9 +1,20 @@
 package com.iteasyup.library.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 
 import com.iteasyup.library.entity.Order;
+
+/**
+ * 订单dao
+ * 
+ * @author dongcheng.liao
+ * @since 2020/02/14
+ */
+
 
 public interface OrderDao {
 //	private Integer id;
@@ -31,5 +42,9 @@ public interface OrderDao {
 			 , before = false
 			 , resultType = int.class)
 	int insert(Order order);
+	
+	@Select("select id, start_time startTime, end_time endTime, user_id userId, book_id bookId, state  from order "
+			+ " where user_id=#{userId}")
+	List<Order> selectByUserId(Integer userId);
 	
 }
