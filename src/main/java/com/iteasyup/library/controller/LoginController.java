@@ -35,6 +35,10 @@ public class LoginController {
 		return ViewNameConst.LOGIN;
 	}
 	
+	@GetMapping("/gmLogin")
+	public String gmInit(){
+		return ViewNameConst.GM_LOGIN;
+	}
 	
 	@PostMapping("/login/matchUserName")
 	@ResponseBody

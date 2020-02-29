@@ -10,7 +10,7 @@
 <body>
 	
 	<form action="order" method="get">
-	<input type="hidden" name="book" value="${book }"/>
+	
 	
 	<label>开始时间</label>
 	<input type="date" id="startDate" name="startDate"/>
@@ -28,18 +28,13 @@
 	<input type="text" readonly="readonly" id="days" name="days">
 	<span>=</span>
 	<span>总价:</span>
-	<input type="text" readonly="readonly" id="totalprice" name="state">
+	<input type="text" readonly="readonly" id="totalprice" name="totalPrice">
 	
 	<button>提交订单</button>
 	
 	</form>
 	
 	<script>
-	console.log($("#startDate"))
-	$("#startDate").blur(function(){
-		console.log($("#startDate"))
-		alert($("#startDate").val());
-	})
 	$("#endDate").blur(function(){
 		
 		var time=parseInt(Date.parse($("#endDate").val())-Date.parse($("#startDate").val()))

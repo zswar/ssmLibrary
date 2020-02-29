@@ -1,4 +1,3 @@
-<%@page import="com.iteasyup.library.service.BookService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,7 +14,7 @@
 	<input type="text" id="likeName"/>
 	<button id="search">搜索</button>
 	
-	<a href="orderhp">我的订单</a>
+	<a href="#">添加图书</a>
 	共<span id="sumBook">${sumBook}</span>本书
 	
 	第<input type="text" value=${pageNumber } id="pageNumber"/>/<span id="totalPage">${totalPage }</span>页
@@ -45,7 +44,8 @@
 	                <td>${book.publishLocation}</td>
 	                <td>${book.publishTime}</td>
 	                <td>${book.price}</td>
-	                <td> <a href="borrow?id=${book.id}&bookName=${book.bookName}&author=${book.author}&publishLocation=${book.publishLocation}&publishTime=${book.publishTime}&price=${book.price}&typeId=${book.typeId}">借阅</a> </td>
+	                <td> <a href="#?id=${book.id}&bookName=${book.bookName}&author=${book.author}&publishLocation=${book.publishLocation}&publishTime=${book.publishTime}&price=${book.price}&typeId=${book.typeId}">更新</a> </td>
+	                <td> <a href="#?id=${book.id}&bookName=${book.bookName}&author=${book.author}&publishLocation=${book.publishLocation}&publishTime=${book.publishTime}&price=${book.price}&typeId=${book.typeId}">删除</a> </td>
 	                
 	            </tr>
         	</c:forEach>
@@ -95,77 +95,6 @@
 				}
 			})
 		})
-		
-		
-		$('#up').click(function(){
-			var pageNo = $('#pageNumber').val();
-			if(pageNo>1){
-				pageNo--;
-				newPage(pageNo);
-			}	
-		})
-		$('#down').click(function(){
-			var pageNo = $('#pageNumber').val();
-			if(pageNo<Number($('#totalPage').text())){
-				pageNo++;
-				newPage(pageNo);
-			}	
-		})
-		$('#pageNumber').change(function(){
-			var pageNo = $('#pageNumber').val();
-			var totalPage = Number($('#totalPage').text());
-			console.log(totalPage);
-			if(pageNo<=totalPage&&pageNo>0){
-				newPage(pageNo);
-				console.log(totalPage);
-			}else{
-				alert("超出总页数");
-			}
-		})
-		function newPage(pageNo){
-			console.log(2)
-			$.ajax({
-				url: '${pageContext.request.contextPath}/bookhp/page',
-				type: 'post',
-				data: {"likeName":$('#likeName').val()
-					 , "pageNumber":pageNo},
-				success: function(data){
-					$('tbody').empty();
-					var count=1;
-					data.subBooks.forEach(book => {
-						var sta = $(`<td></td>`);
-							sta.append(count);
-						var bookName = $(`<td></td>`);
-							bookName.append(book.bookName);
-						var author = $(`<td></td>`);
-							author.append(book.author);
-						var publishLocation = $(`<td></td>`);
-							publishLocation.append(book.publishLocation);
-						var publishTime = $(`<td></td>`);
-							publishTime.append(book.publishTime);
-						var price = $(`<td></td>`);
-							price.append(book.price);
-						var a = $(`<a href="borrow?id=${book.id}&bookName=${book.bookName}&author=${book.author}&publishLocation=${book.publishLocation}&publishTime=${book.publishTime}&price=${book.price}&typeId=${book.typeId}">借阅</a>`);
-						var borrow = $(`<td></td>`);
-							borrow.append(a);
-						var tr = $(`<tr></tr>`);
-						tr.append(sta)
-						  .append(bookName)
-						  .append(author)
-						  .append(publishLocation)
-						  .append(publishTime)
-						  .append(price)
-						  .append(borrow);
-						$('tbody').append(tr);
-						$("#sumBook").text(data.sumBook);
-						$("#totalPrice").text(data.totalPrice);
-						$('#pageNumber').attr("value",pageNo);
-						count++;
-					});
-				}
-			})
-		}
 	</script>
-	
 </body>
 </html>

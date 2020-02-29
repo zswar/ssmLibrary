@@ -1,6 +1,8 @@
 package com.iteasyup.library.controller;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +34,9 @@ public class BorrowController {
 	 * @since 2020/02/23
 	 */
 	@GetMapping("/borrow")
-	public ModelAndView init(Book book, ModelAndView modelAndView){
+	public ModelAndView init(Book book, ModelAndView modelAndView, HttpSession session){
 		modelAndView.setViewName(ViewNameConst.BORROW);
-		modelAndView.addObject("book",book);
+		session.setAttribute("book", book);
 		System.out.println(book);
 		return modelAndView;
 	}

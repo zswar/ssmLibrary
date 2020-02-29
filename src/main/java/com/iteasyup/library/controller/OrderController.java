@@ -1,5 +1,10 @@
 package com.iteasyup.library.controller;
 
+
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -33,21 +38,26 @@ public class OrderController {
 	 * 借阅界面传到订单界面
 	 * 
 	 * @author dongcheng.liao
+	 * @throws ParseException 
 	 * @since 2020/02/23
 	 */
 	@GetMapping("/order")
-	public ModelAndView init(Book book
-						   , String startDate
+	public ModelAndView init(String startDate
 						   , String endDate
 						   , String days
-						   , String state
+						   , String totalPrice
 						   , ModelAndView modelAndView
-						   , HttpSession session){
+						   , HttpSession session) throws ParseException{
+		System.out.println(days);
+		System.out.println(totalPrice);
+		
 		/**
 		 * 取出session里的user
 		 */
-		Object user = session.getAttribute("user");
-		User user2=(User)user;
+		Object attrUser = session.getAttribute("user");
+		User user = (User)attrUser;
+		Object attrBook = session.getAttribute("book");
+		Book book = (Book)attrBook;
 		
 		/**
 		 * startDate格式与数据库里的不一样，需要更改
@@ -57,8 +67,17 @@ public class OrderController {
 		/**
 		 * 将userid等信息装进order对象
 		 */
-		Order order=new Order(null, startDate, endDate, user2.getId(), book.getId(), state);
+		Timestamp startTime=null;
+		Timestamp endTime=null;
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		startTime=new Timestamp(dateFormat.parse(startDate+" 00:00:00").getTime());
+		endTime=new Timestamp(dateFormat.parse(endDate+" 00:00:00").getTime());
+		System.out.println(user);
+		System.out.println(book);
+		System.out.println(totalPrice);
+		Order order=new Order(null, startTime, endTime, user.getId(), book.getId(), "已付款", Integer.parseInt(totalPrice));
 		
+		System.out.println(order);
 		/**
 		 * 将order装入数据库
 		 */
@@ -75,14 +94,14 @@ public class OrderController {
 		modelAndView.setViewName(ViewNameConst.ORDER);
 		modelAndView.addObject("order", order)
 					.addObject("days",days)
-					.addObject("userName",user2.getUserName());
+					.addObject("userName",user.getUserName());
 		return modelAndView;
 	}
 	
 	/**
 	 * 根据session里的user查询所有订单
 	 */
-	@PostMapping("/order/center")
+	@GetMapping("/order/center")
 	public ModelAndView center(HttpSession session, ModelAndView modelAndView){
 		User user=(User)session.getAttribute("user");
 		List<Order> orders = orderService.findOrderByUserId(user.getId());

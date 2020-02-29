@@ -1,5 +1,7 @@
 package com.iteasyup.library.entity;
 
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +19,9 @@ public class Order {
 
 	private Integer id;
 	
-	private String startTime;
+	private Timestamp startTime;
 	
-	private String endTime;
+	private Timestamp endTime;
 	
 	private Integer userId;
 	
@@ -27,5 +29,6 @@ public class Order {
 	
 	private String state;
 	
+	private int totalPrice;
 	
 }

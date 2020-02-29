@@ -30,12 +30,8 @@ public interface OrderDao {
 //	private String state;
 	
 	
-	@Insert("insert into order values(defalut "
-			+ "						, #{startTime}"
-			+ "						, #{endTime}"
-			+ "						, #{userId}"
-			+ "						, #{bookId}"
-			+ "						, #{state})")
+	@Insert("insert into `order` values(default , #{startTime}, #{endTime}"
+			+ ", #{userId}, #{bookId}, #{state}, #{totalPrice})")
 	@SelectKey(statement = "select last_insert_id()"
 			 , keyProperty = "id"
 			 , keyColumn = "id"
@@ -43,7 +39,7 @@ public interface OrderDao {
 			 , resultType = int.class)
 	int insert(Order order);
 	
-	@Select("select id, start_time startTime, end_time endTime, user_id userId, book_id bookId, state  from order "
+	@Select("select id, start_time startTime, end_time endTime, user_id userId, book_id bookId, state  from `order` "
 			+ " where user_id=#{userId}")
 	List<Order> selectByUserId(Integer userId);
 	

@@ -8,7 +8,7 @@
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
 </head>
 <body>
-	<h1>请登录</h1>
+	<h1>管理员登录</h1>
 	<form action="bookhp" method="get">
 		<label>用户名：</label>
 		<input type="text" name="userName" id="userNameIn"/>
@@ -21,9 +21,6 @@
 		<button disabled>登录</button>
 		<br/>
 	</form>
-	<a href="#">忘记密码</a>
-	<a href="register?userName&password">免费注册</a>
-	
 	
 	<script>
 		$("#userNameIn").on("blur",function(){
@@ -65,6 +62,5 @@
 			});
 		})
 	</script>
-	
 </body>
 </html>
