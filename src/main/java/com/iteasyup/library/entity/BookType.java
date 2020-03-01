@@ -17,6 +17,6 @@ public class BookType {
 	
 	private Integer id;
 	
-	private String typename;
+	private String typeName;
 	
 }

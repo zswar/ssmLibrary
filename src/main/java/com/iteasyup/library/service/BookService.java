@@ -33,4 +33,9 @@ public class BookService {
 		return books;
 	}
 	
+	public int createBook(Book book){
+		int result = bookDao.insert(book);
+		return result;
+	}
+	
 }

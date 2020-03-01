@@ -15,7 +15,7 @@
 	<input type="text" id="likeName"/>
 	<button id="search">搜索</button>
 	
-	<a href="orderhp">我的订单</a>
+	<a href="order/center">我的订单</a>
 	共<span id="sumBook">${sumBook}</span>本书
 	
 	第<input type="text" value=${pageNumber } id="pageNumber"/>/<span id="totalPage">${totalPage }</span>页
